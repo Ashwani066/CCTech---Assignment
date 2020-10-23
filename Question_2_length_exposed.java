@@ -1,13 +1,43 @@
-
+package CCtech;
 import java.util.*;
 
+/*
+	########### INPUT ############
+
+	First Line contians number of Buildings - n
+	next 4*n line contians - x, y (co-ordinates).
+	next line contains the co-ordinates of P - (x, y).
+
+*/
 public class Question_2_length_exposed {
 	private static Scanner sc = new Scanner(System.in);
-	
 
-	static Double findDist(List<Point> v, Point sun) {
+	//	--------- Driver Code -----------
+	public static void main(String[] args) {
+		int n = sc.nextInt();
+		
+		List<Point> v = new ArrayList<>();
+		
+		for(int i=0; i<4*n; ++i) {
+			Point pt = new Point(sc.nextDouble(), sc.nextDouble());
+			v.add(pt);
+		}
+
+		Point sun = new Point(sc.nextDouble(), sc.nextDouble());
+		Double ans = new Sol().findDist(v, sun);
+
+		System.out.println(ans);
+	}
+
+	// ------------ END -----------
+}
+
+
+class Sol{
+	// Main function to find the minimum distance.
+	public Double findDist(List<Point> v, Point sun) {
 		int n = v.size();
-		int m = 2;
+		// int m = 2;
 		double X = sun.x;
 		double Y = sun.y;
 
@@ -55,24 +85,7 @@ public class Question_2_length_exposed {
 		}
 		return ans;
 	}
-	
-	public static void main(String[] args) {
-		int n = sc.nextInt();
-		
-		List<Point> v = new ArrayList<>();
-		
-		for(int i=0; i<4*n; ++i) {
-			Point pt = new Point(sc.nextDouble(), sc.nextDouble());
-			v.add(pt);
-		}
-
-		Point sun = new Point(sc.nextDouble(), sc.nextDouble());
-		Double ans = findDist(v, sun);
-
-		System.out.println((double)ans);
-	}
 }
-
 class Point {
 	Double x, y;
 	
